@@ -1,6 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
 using System.Text;
 
 namespace BlazorAuthDemo.Services
@@ -18,7 +18,8 @@ namespace BlazorAuthDemo.Services
         public bool Authenticate(string username, string password)
         {
             var user = _users.FirstOrDefault(u => u.Username == username);
-            if (user == default) return false;
+            if (user == default) return false; //auth fails because username doesn’t exist
+
             var decrypted = Decrypt(user.EncryptedPassword);
             if (decrypted == password)
             {

@@ -1,8 +1,4 @@
-using System;
-using System.Net.Http;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+
 using BlazorAuthDemo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +6,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IAuthenticationService, AuthenticationService>();
+
 // Register HTTP client for calling API endpoints
 builder.Services.AddHttpClient();
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient());
